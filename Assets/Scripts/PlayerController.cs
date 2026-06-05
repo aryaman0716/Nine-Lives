@@ -6,6 +6,7 @@ public class PlayerController : MonoBehaviour
 {
     [SerializeField] private float jumpForce = 12f;
     [SerializeField] private GameObject startPrompt;
+    [SerializeField] private LivesUI livesUI;
     private Rigidbody2D rb;
     private Animator animator;
     private PlayerInputActions inputActions;
@@ -13,6 +14,7 @@ public class PlayerController : MonoBehaviour
     private bool gameStarted = false;
     private bool invulnerable = false;
     private SpriteRenderer spriteRenderer;
+    private int lives = 9;
     public bool GameStarted => gameStarted;
     private void Awake()
     {
@@ -36,6 +38,7 @@ public class PlayerController : MonoBehaviour
         animator.SetBool("isRunning", false);
         animator.SetBool("isGrounded", true);
         startPrompt.SetActive(true);
+        livesUI.InitializeLives(lives);
     }
     private void Update()
     {
@@ -78,7 +81,8 @@ public class PlayerController : MonoBehaviour
     {
         if (other.CompareTag("Obstacle") && !invulnerable)
         {
-            StartCoroutine(InvulnerabilityRoutine());
+            //StartCoroutine(InvulnerabilityRoutine());
+            LoseLife();
         }
     }
     private IEnumerator InvulnerabilityRoutine()
@@ -100,5 +104,23 @@ public class PlayerController : MonoBehaviour
 
         spriteRenderer.enabled = true;
         invulnerable = false;
+    }
+    private void LoseLife()
+    {
+        lives--;
+
+        livesUI.RemoveHeart();
+
+        StartCoroutine(InvulnerabilityRoutine());
+
+        if (lives <= 0)
+        {
+            GameOver();
+        }
+    }
+    private void GameOver()
+    {
+        Time.timeScale = 0f;
+        Debug.Log("Game Over");
     }
 }
