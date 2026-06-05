@@ -1,4 +1,5 @@
 using UnityEngine;
+using System.Collections;
 using UnityEngine.InputSystem;
 
 public class PlayerController : MonoBehaviour
@@ -10,6 +11,8 @@ public class PlayerController : MonoBehaviour
     private PlayerInputActions inputActions;
     private bool isGrounded;
     private bool gameStarted = false;
+    private bool invulnerable = false;
+    private SpriteRenderer spriteRenderer;
     public bool GameStarted => gameStarted;
     private void Awake()
     {
@@ -27,6 +30,7 @@ public class PlayerController : MonoBehaviour
     {
         rb = GetComponent<Rigidbody2D>();
         animator = GetComponent<Animator>();
+        spriteRenderer = GetComponent<SpriteRenderer>();
         gameStarted = false;
         isGrounded = true;
         animator.SetBool("isRunning", false);
@@ -69,5 +73,32 @@ public class PlayerController : MonoBehaviour
 
             animator.SetBool("isGrounded", true);
         }
+    }
+    private void OnTriggerEnter2D(Collider2D other)
+    {
+        if (other.CompareTag("Obstacle") && !invulnerable)
+        {
+            StartCoroutine(InvulnerabilityRoutine());
+        }
+    }
+    private IEnumerator InvulnerabilityRoutine()
+    {
+        invulnerable = true;
+
+        float duration = 1f;
+        float flickerInterval = 0.1f;
+        float timer = 0f;
+
+        while (timer < duration)
+        {
+            spriteRenderer.enabled = false;
+            yield return new WaitForSeconds(flickerInterval);
+            spriteRenderer.enabled = true;
+            yield return new WaitForSeconds(flickerInterval);
+            timer += flickerInterval * 2;
+        }
+
+        spriteRenderer.enabled = true;
+        invulnerable = false;
     }
 }
