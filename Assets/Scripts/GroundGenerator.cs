@@ -19,7 +19,7 @@ public class GroundGenerator : MonoBehaviour
 
     private void SpawnSection(float xPos)
     {
-        GameObject section = Instantiate(groundPrefab, new Vector3(xPos, -3f, 0), Quaternion.identity); 
+        GameObject section = Instantiate(groundPrefab, new Vector3(xPos, -3.2f, 0), Quaternion.identity); 
         sections.Enqueue(section);
     }
 
