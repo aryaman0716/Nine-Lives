@@ -14,7 +14,8 @@ public class PlayerController : MonoBehaviour
     private bool gameStarted = false;
     private bool invulnerable = false;
     private SpriteRenderer spriteRenderer;
-    private int lives = 9;
+    private const int maxLives = 9;
+    private int lives = maxLives;
     public bool GameStarted => gameStarted;
     private void Awake()
     {
@@ -84,6 +85,11 @@ public class PlayerController : MonoBehaviour
             //StartCoroutine(InvulnerabilityRoutine());
             LoseLife();
         }
+        if (other.CompareTag("Collectible"))
+        {
+            GainLife();
+            Destroy(other.gameObject);
+        }
     }
     private IEnumerator InvulnerabilityRoutine()
     {
@@ -117,6 +123,13 @@ public class PlayerController : MonoBehaviour
         {
             GameOver();
         }
+    }
+    private void GainLife()
+    {
+        if (lives >= maxLives)
+            return;
+        lives++;
+        livesUI.AddHeart();
     }
     private void GameOver()
     {

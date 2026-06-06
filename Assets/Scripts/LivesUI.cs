@@ -22,7 +22,11 @@ public class LivesUI : MonoBehaviour
             hearts.Add(newHeart);
         }
     }
-
+    public void AddHeart()
+    {
+        GameObject newHeart = Instantiate(heartPrefab, transform);
+        hearts.Add(newHeart);
+    }
     public void RemoveHeart()
     {
         if (hearts.Count == 0)
