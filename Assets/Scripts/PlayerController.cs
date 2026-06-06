@@ -120,7 +120,6 @@ public class PlayerController : MonoBehaviour
     }
     private void GameOver()
     {
-        Time.timeScale = 0f;
-        Debug.Log("Game Over");
+        GameManager.Instance.GameOver();
     }
 }
