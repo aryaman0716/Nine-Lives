@@ -85,9 +85,14 @@ public class PlayerController : MonoBehaviour
             //StartCoroutine(InvulnerabilityRoutine());
             LoseLife();
         }
-        if (other.CompareTag("Collectible"))
+        if (other.CompareTag("Milk"))
         {
             GainLife();
+            Destroy(other.gameObject);
+        }
+        if (other.CompareTag("Fish"))
+        {
+            CollectFish();
             Destroy(other.gameObject);
         }
     }
@@ -130,6 +135,11 @@ public class PlayerController : MonoBehaviour
             return;
         lives++;
         livesUI.AddHeart();
+    }
+    private void CollectFish()
+    {
+        ScoreManager scoreManager = FindFirstObjectByType<ScoreManager>();
+        scoreManager.AddPoints(100);
     }
     private void GameOver()
     {

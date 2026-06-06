@@ -1278,6 +1278,53 @@ SpriteRenderer:
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
   m_SpriteSortPoint: 0
+--- !u!1 &981718806
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 981718808}
+  - component: {fileID: 981718807}
+  m_Layer: 0
+  m_Name: FishSpawner
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &981718807
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 981718806}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 874cce5c1e929294d837006e67da4063, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::FishSpawner
+  fishPrefab: {fileID: 8876916789185472496, guid: d96dd5a53b95a9146b42acefe0bdf7b8, type: 3}
+  minSpawnTime: 4
+  maxSpawnTime: 8
+--- !u!4 &981718808
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 981718806}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 12, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &996216602
 GameObject:
   m_ObjectHideFlags: 0
@@ -2020,8 +2067,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::MilkSpawner
   milkPrefab: {fileID: 841165156940007542, guid: 691a7e8978c326d49bde0571b3f78537, type: 3}
-  minSpawnTime: 10
-  maxSpawnTime: 20
+  minSpawnTime: 20
+  maxSpawnTime: 30
 --- !u!4 &1339329178
 Transform:
   m_ObjectHideFlags: 0
@@ -2727,3 +2774,4 @@ SceneRoots:
   - {fileID: 1384620138}
   - {fileID: 1421880274}
   - {fileID: 1339329178}
+  - {fileID: 981718808}

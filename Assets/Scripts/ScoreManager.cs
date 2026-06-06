@@ -36,4 +36,8 @@ public class ScoreManager : MonoBehaviour
             highScoreText.text = "Best: " + highScore;
         }
     }
+    public void AddPoints(int points)
+    {
+        score += points;
+    }
 }
