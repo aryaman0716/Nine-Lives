@@ -21,7 +21,7 @@ public class ScoreManager : MonoBehaviour
         if (!player.GameStarted)
             return;
 
-        score += Time.deltaTime * 10f;
+        score += SpeedManager.Instance.CurrentSpeed * Time.deltaTime;
         scoreText.text = "Score: " + Mathf.FloorToInt(score);
         highScoreText.text = "Best: " + highScore;
     }

@@ -2,8 +2,6 @@ using UnityEngine;
 
 public class WorldScroller : MonoBehaviour
 {
-    [SerializeField]
-    private float scrollSpeed = 5f;
     private PlayerController player;
     private void Start()
     {
@@ -13,6 +11,6 @@ public class WorldScroller : MonoBehaviour
     {
         if (!player.GameStarted)
             return;
-        transform.position += Vector3.left * scrollSpeed * Time.deltaTime;
+        transform.position += Vector3.left * SpeedManager.Instance.CurrentSpeed * Time.deltaTime;
     }
 }
