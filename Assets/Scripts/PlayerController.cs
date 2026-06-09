@@ -87,11 +87,13 @@ public class PlayerController : MonoBehaviour
         }
         if (other.CompareTag("Milk"))
         {
+            AudioManager.Instance.PlayMeow();
             GainLife();
             Destroy(other.gameObject);
         }
         if (other.CompareTag("Fish"))
         {
+            AudioManager.Instance.PlayMeow();
             CollectFish();
             Destroy(other.gameObject);
         }
@@ -118,6 +120,7 @@ public class PlayerController : MonoBehaviour
     }
     private void LoseLife()
     {
+        AudioManager.Instance.PlaySad();
         lives--;
 
         livesUI.RemoveHeart();
