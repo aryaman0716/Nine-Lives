@@ -10,6 +10,7 @@ public class MusicManager : MonoBehaviour
     private void Start()
     {
         audioSource = GetComponent<AudioSource>();
+        audioSource.volume = PlayerPrefs.GetFloat("MusicVolume", 1f);
         PlayCurrentTrack();
     }
 
@@ -44,5 +45,10 @@ public class MusicManager : MonoBehaviour
         }
 
         PlayCurrentTrack();
+    }
+    public void SetMusicVolume(float volume)
+    {
+        audioSource.volume = volume;
+        PlayerPrefs.SetFloat("MusicVolume", volume);
     }
 }

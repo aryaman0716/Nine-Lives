@@ -12,6 +12,7 @@ public class AudioManager : MonoBehaviour
     {
         Instance = this;
         audioSource = GetComponent<AudioSource>();
+        audioSource.volume = PlayerPrefs.GetFloat("SFXVolume", 1f); 
     }
 
     public void PlayMeow()
@@ -22,5 +23,10 @@ public class AudioManager : MonoBehaviour
     public void PlaySad()
     {
         audioSource.PlayOneShot(catSad);
+    }
+    public void SetSFXVolume(float volume)
+    {
+        audioSource.volume = volume;
+        PlayerPrefs.SetFloat("SFXVolume", volume);
     }
 }
