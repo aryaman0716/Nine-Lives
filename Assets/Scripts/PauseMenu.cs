@@ -38,6 +38,10 @@ public class PauseMenu : MonoBehaviour
     {
         isPaused = !isPaused;
         pausePanel.SetActive(isPaused);
+        if (isPaused)
+        {
+            volumePanel.SetActive(false);
+        }
         Time.timeScale = isPaused ? 0f : 1f;
     }
 
